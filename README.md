@@ -224,7 +224,7 @@ Ensure all production environment variables are set:
 - `DATABASE_URL` - PostgreSQL connection string
 - `PAYSTACK_SECRET_KEY` - Production Paystack key
 
-### Deploy to Render/Railway
+### Deploy to cloud(contabo)
 
 1. Create new web service
 2. Set environment variables
