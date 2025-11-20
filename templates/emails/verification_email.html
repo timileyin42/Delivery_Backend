@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,82 +14,198 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         .container {
             max-width: 600px;
             margin: 20px auto;
             background-color: #ffffff;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .header {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
+
         .header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 26px;
+            font-weight: bold;
         }
+
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
         .content {
-            padding: 30px 20px;
+            padding: 30px 25px;
         }
+
         .button {
             display: inline-block;
             background-color: #4CAF50;
             color: white;
-            padding: 14px 30px;
+            padding: 15px 35px;
             text-decoration: none;
             border-radius: 5px;
-            margin: 20px 0;
+            margin: 25px 0;
             font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
+
         .button:hover {
             background-color: #45a049;
         }
+
         .link-box {
             background-color: #f9f9f9;
             padding: 15px;
             border-radius: 5px;
             word-break: break-all;
             margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #666;
         }
+
         .footer {
             background-color: #f4f4f4;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             font-size: 12px;
             color: #999;
         }
+
+        .info-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 12px 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .features {
+            margin: 20px 0;
+        }
+
+        .features li {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 25px 0;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome to Internal Logistics Platform!</h1>
+            <h1>✉️ Welcome to Internal Logistics Platform!</h1>
+            <p>One more step to activate your account</p>
         </div>
+
         <div class="content">
             <p>Hi <strong>{{ user_name }}</strong>,</p>
-            <p>Thank you for registering with us. Please verify your email address to activate your account.</p>
-            
-            <div style="text-align: center;">
-                <a href="{{ verification_url }}" class="button">Verify Email Address</a>
+
+            <p>Thank you for signing up with <strong>Internal Logistics Platform</strong> - Nigeria's leading logistics
+                management solution for efficient delivery operations across Lagos and beyond.</p>
+
+            <div class="info-box">
+                <p style="margin: 0;"><strong>📋 Why verify your email?</strong></p>
+                <p style="margin: 8px 0 0 0; font-size: 14px;">Email verification helps us ensure the security of your
+                    account and enables us to send you important notifications about your orders, rider updates, and
+                    platform announcements.</p>
             </div>
-            
-            <p>Or copy and paste this link into your browser:</p>
+
+            <p>To complete your registration and activate your account, please verify your email address by clicking the
+                button below:</p>
+
+            <div style="text-align: center;">
+                <a href="{{ verification_url }}" class="button">✓ Verify Email Address</a>
+            </div>
+
+            <p style="text-align: center; color: #666; font-size: 13px; margin: 10px 0;">
+                Or copy and paste this link into your browser:
+            </p>
             <div class="link-box">
                 {{ verification_url }}
             </div>
-            
-            <p><strong>This link will expire in 24 hours.</strong></p>
-            
-            <p>If you didn't create this account, please ignore this email.</p>
+
+            <div class="warning-box">
+                <strong>⏰ Important:</strong> This verification link will expire in <strong>24 hours</strong> for
+                security reasons. If it expires, you can request a new verification link from the login page.
+            </div>
+
+            <div class="divider"></div>
+
+            <h3 style="color: #333; margin-bottom: 15px;">🚀 What's Next After Verification?</h3>
+
+            <p>Once your email is verified, you'll gain full access to:</p>
+
+            <ul class="features">
+                <li><strong>Complete Order Dashboard</strong> - Manage all your deliveries in one centralized platform
+                </li>
+                <li><strong>Real-Time Rider Tracking</strong> - Monitor your delivery fleet with live GPS updates</li>
+                <li><strong>Performance Analytics</strong> - Get insights into delivery times, success rates, and
+                    revenue</li>
+                <li><strong>Automated Notifications</strong> - Receive SMS and email updates for all order events</li>
+                <li><strong>Secure Payment Integration</strong> - Process payments seamlessly with Paystack</li>
+                <li><strong>Rider Management Tools</strong> - Track earnings, performance, and task assignments</li>
+            </ul>
+
+            <p style="margin-top: 20px;">Our platform is designed specifically for Nigerian businesses with features
+                like:</p>
+            <ul style="color: #666; font-size: 14px;">
+                <li>Nigerian phone number support (+234)</li>
+                <li>Naira (₦) currency integration</li>
+                <li>Lagos-optimized delivery zones</li>
+                <li>Local payment gateway (Paystack)</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p><strong>Didn't sign up for this account?</strong></p>
+            <p style="font-size: 14px; color: #666;">If you didn't create an account with Internal Logistics Platform,
+                you can safely ignore this email. No further action is required, and no account will be created.</p>
+
+            <p style="margin-top: 30px;">
+                Looking forward to serving you!<br>
+                <strong>The Internal Logistics Team</strong>
+            </p>
         </div>
+
         <div class="footer">
-            <p>&copy; 2024 Internal Logistics Platform. All rights reserved.</p>
-            <p>Lagos, Nigeria</p>
+            <p><strong>Internal Logistics Platform</strong></p>
+            <p>Simplifying Delivery Management Across Nigeria</p>
+            <p style="margin-top: 10px;">Lagos, Nigeria</p>
+            <p style="margin-top: 15px; font-size: 11px;">
+                &copy; 2025 Internal Logistics Platform. All rights reserved.
+            </p>
+            <p style="margin-top: 10px; font-size: 11px; color: #bbb;">
+                This is an automated email. Please do not reply directly to this message.
+            </p>
         </div>
     </div>
 </body>
+
 </html>
