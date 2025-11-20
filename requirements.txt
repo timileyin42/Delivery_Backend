@@ -1,0 +1,46 @@
+# Core Django
+Django==5.0.1
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+
+# Database
+psycopg2-binary==2.9.9
+
+# Environment Variables
+python-decouple==3.8
+
+# CORS
+django-cors-headers==4.3.1
+
+# API Documentation
+drf-spectacular==0.27.0
+
+# API Integrations (Paystack Payments & Termii SMS)
+requests==2.31.0
+
+# Background Tasks (Optional)
+celery==5.3.6
+redis==5.0.1
+
+# Image Processing (for delivery proof uploads)
+Pillow==10.2.0
+
+# Utilities
+python-dateutil==2.8.2
+
+# Development Tools
+django-extensions==3.2.3
+
+# Testing
+coverage==7.4.0
+
+# Email Service
+resend==0.8.0
+
+# Cloud Storage
+google-cloud-storage==2.14.0
+
+# Production Server
+gunicorn==21.2.0
+whitenoise==6.6.0
+dj-database-url==2.1.0
