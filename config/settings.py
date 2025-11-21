@@ -217,6 +217,14 @@ GCP_PROJECT_ID = config('GCP_PROJECT_ID', default='')
 GCS_BUCKET_NAME = config('GCS_BUCKET_NAME', default='')
 GCP_CREDENTIALS_FILE = config('GCP_CREDENTIALS_FILE', default='')  # Path to service account JSON
 
+# Google Maps API (for Location Tracking)
+GOOGLE_MAPS_API_KEY = config('GOOGLE_MAPS_API_KEY', default='')
+GOOGLE_MAPS_FRONTEND_API_KEY = config('GOOGLE_MAPS_FRONTEND_API_KEY', default='')
+
+# Location Tracking Settings
+LOCATION_UPDATE_MAX_AGE_MINUTES = 5  # Location considered fresh if updated within this time
+LOCATION_UPDATE_THROTTLE_SECONDS = 10  # Minimum seconds between location updates
+
 # File Upload Settings
 MAX_UPLOAD_SIZE = config('MAX_UPLOAD_SIZE', default=5242880, cast=int)  # 5MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = MAX_UPLOAD_SIZE

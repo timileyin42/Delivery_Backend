@@ -68,3 +68,73 @@ def get_time_of_day() -> str:
         return 'evening'
     else:
         return 'night'
+
+
+def is_location_fresh(last_update, max_age_minutes: int = 5) -> bool:
+    """
+    Check if location data is recent.
+    
+    Args:
+        last_update: DateTime of last location update
+        max_age_minutes: Maximum age in minutes to consider fresh
+    
+    Returns:
+        True if location is fresh, False otherwise
+    """
+    if not last_update:
+        return False
+    
+    from django.utils import timezone
+    from datetime import timedelta
+    
+    max_age = timedelta(minutes=max_age_minutes)
+    return timezone.now() - last_update < max_age
+
+
+def calculate_eta(distance_km: float, vehicle_type: str = 'MOTORCYCLE') -> dict:
+    """
+    Calculate estimated time of arrival based on distance and vehicle type.
+    
+    Args:
+        distance_km: Distance in kilometers
+        vehicle_type: Type of vehicle (MOTORCYCLE, BICYCLE, CAR, VAN)
+    
+    Returns:
+        Dictionary with ETA information
+    """
+    # Average speeds by vehicle type (km/h) considering Lagos traffic
+    speed_map = {
+        'MOTORCYCLE': 25,  # Faster in traffic
+        'BICYCLE': 15,
+        'CAR': 20,
+        'VAN': 18
+    }
+    
+    avg_speed = speed_map.get(vehicle_type, 20)
+    
+    # Calculate time in minutes
+    time_hours = distance_km / avg_speed
+    time_minutes = int(time_hours * 60)
+    
+    # Add buffer time for stops/delays
+    time_minutes += 5
+    
+    # Format human-readable time
+    if time_minutes < 5:
+        time_text = "Arriving soon"
+    elif time_minutes < 60:
+        time_text = f"{time_minutes} minutes"
+    else:
+        hours = time_minutes // 60
+        mins = time_minutes % 60
+        if mins > 0:
+            time_text = f"{hours} hour{'s' if hours > 1 else ''} {mins} minutes"
+        else:
+            time_text = f"{hours} hour{'s' if hours > 1 else ''}"
+    
+    return {
+        'minutes': time_minutes,
+        'text': time_text,
+        'distance_km': distance_km,
+        'avg_speed_kmh': avg_speed
+    }

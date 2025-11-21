@@ -74,6 +74,7 @@ class RiderProfile(models.Model):
         null=True,
         blank=True
     )
+    last_location_update = models.DateTimeField(null=True, blank=True)
     
     # Metadata
     onboarding_completed = models.BooleanField(default=False)
@@ -98,6 +99,16 @@ class RiderProfile(models.Model):
         if self.total_deliveries == 0:
             return 0.0
         return round((self.successful_deliveries / self.total_deliveries) * 100, 2)
+    
+    @property
+    def is_location_fresh(self):
+        """Check if location data is recent (within last 5 minutes)."""
+        if not self.last_location_update:
+            return False
+        from django.utils import timezone
+        from datetime import timedelta
+        max_age = timedelta(minutes=5)
+        return timezone.now() - self.last_location_update < max_age
     
     def update_stats(self, delivery_successful=True):
         """Update rider statistics after delivery."""

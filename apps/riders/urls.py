@@ -8,6 +8,11 @@ from .views import (
     rider_profile_update_view,
     available_riders_view,
 )
+from .location_views import (
+    update_rider_location,
+    get_rider_location,
+    get_all_riders_locations,
+)
 
 app_name = 'riders'
 
@@ -22,4 +27,9 @@ urlpatterns = [
     path('earnings/', rider_earnings_view, name='rider-earnings'),
     path('performance/', rider_performance_view, name='rider-performance'),
     path('profile/', rider_profile_update_view, name='rider-profile-update'),
+    
+    # Location Tracking
+    path('location/update/', update_rider_location, name='update-location'),
+    path('<int:rider_id>/location/', get_rider_location, name='rider-location'),
+    path('locations/all/', get_all_riders_locations, name='all-riders-locations'),
 ]

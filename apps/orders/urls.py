@@ -13,6 +13,7 @@ from .gcs_views import (
     confirm_delivery_proof_upload_view,
     get_delivery_proof_url_view,
 )
+from apps.riders.location_views import track_order
 
 app_name = 'orders'
 
@@ -27,6 +28,9 @@ urlpatterns = [
     path('<int:pk>/reassign/', reassign_order_view, name='order-reassign'),
     path('<int:pk>/cancel/', cancel_order_view, name='order-cancel'),
     path('<int:pk>/status/', update_order_status_view, name='order-status-update'),
+    
+    # Order Tracking
+    path('<str:order_number>/track/', track_order, name='order-track'),
     
     # Delivery Proof (GCS)
     path('<int:order_id>/upload-proof-url/', get_delivery_proof_upload_url_view, name='upload-proof-url'),
